@@ -260,7 +260,7 @@
           <a:spcPct val="0"/>
         </a:spcBef>
         <a:buNone/>
-        <a:defRPr sz="3300" kern="1200">
+        <a:defRPr sz="2400" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -277,7 +277,7 @@
         </a:spcBef>
         <a:buFont typeface="Arial"/>
         <a:buChar char="•"/>
-        <a:defRPr sz="2400" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -292,7 +292,7 @@
         </a:spcBef>
         <a:buFont typeface="Arial"/>
         <a:buChar char="–"/>
-        <a:defRPr sz="2100" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -307,7 +307,7 @@
         </a:spcBef>
         <a:buFont typeface="Arial"/>
         <a:buChar char="•"/>
-        <a:defRPr sz="1800" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -322,7 +322,7 @@
         </a:spcBef>
         <a:buFont typeface="Arial"/>
         <a:buChar char="–"/>
-        <a:defRPr sz="1500" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -337,7 +337,7 @@
         </a:spcBef>
         <a:buFont typeface="Arial"/>
         <a:buChar char="»"/>
-        <a:defRPr sz="1500" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -352,7 +352,7 @@
         </a:spcBef>
         <a:buFont typeface="Arial"/>
         <a:buChar char="•"/>
-        <a:defRPr sz="1500" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -367,7 +367,7 @@
         </a:spcBef>
         <a:buFont typeface="Arial"/>
         <a:buChar char="•"/>
-        <a:defRPr sz="1500" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -382,7 +382,7 @@
         </a:spcBef>
         <a:buFont typeface="Arial"/>
         <a:buChar char="•"/>
-        <a:defRPr sz="1500" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -397,7 +397,7 @@
         </a:spcBef>
         <a:buFont typeface="Arial"/>
         <a:buChar char="•"/>
-        <a:defRPr sz="1500" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -412,7 +412,7 @@
         <a:defRPr lang="en-US"/>
       </a:defPPr>
       <a:lvl1pPr marL="0" algn="l" defTabSz="342900" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">
-        <a:defRPr sz="1350" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -422,7 +422,7 @@
         </a:defRPr>
       </a:lvl1pPr>
       <a:lvl2pPr marL="342900" algn="l" defTabSz="342900" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">
-        <a:defRPr sz="1350" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -432,7 +432,7 @@
         </a:defRPr>
       </a:lvl2pPr>
       <a:lvl3pPr marL="685800" algn="l" defTabSz="342900" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">
-        <a:defRPr sz="1350" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -442,7 +442,7 @@
         </a:defRPr>
       </a:lvl3pPr>
       <a:lvl4pPr marL="1028700" algn="l" defTabSz="342900" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">
-        <a:defRPr sz="1350" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -452,7 +452,7 @@
         </a:defRPr>
       </a:lvl4pPr>
       <a:lvl5pPr marL="1371600" algn="l" defTabSz="342900" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">
-        <a:defRPr sz="1350" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -462,7 +462,7 @@
         </a:defRPr>
       </a:lvl5pPr>
       <a:lvl6pPr marL="1714500" algn="l" defTabSz="342900" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">
-        <a:defRPr sz="1350" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -472,7 +472,7 @@
         </a:defRPr>
       </a:lvl6pPr>
       <a:lvl7pPr marL="2057400" algn="l" defTabSz="342900" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">
-        <a:defRPr sz="1350" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -482,7 +482,7 @@
         </a:defRPr>
       </a:lvl7pPr>
       <a:lvl8pPr marL="2400300" algn="l" defTabSz="342900" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">
-        <a:defRPr sz="1350" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
@@ -492,7 +492,7 @@
         </a:defRPr>
       </a:lvl8pPr>
       <a:lvl9pPr marL="2743200" algn="l" defTabSz="342900" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">
-        <a:defRPr sz="1350" kern="1200">
+        <a:defRPr sz="1200" kern="1200">
           <a:solidFill>
             <a:schemeClr val="tx1"/>
           </a:solidFill>
