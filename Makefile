@@ -16,6 +16,7 @@ PUBLISH_DIR = publish
 SRC_DIR = src
 IMAGES_DIR = images
 COMMON_DIR = common
+BUILD_DIR = build
 
 ############################
 # Targets
@@ -24,9 +25,13 @@ COMMON_DIR = common
 SRC  = $(wildcard $(SRC_DIR)/*.md)
 PDF  = $(SRC:.md=.pdf)
 PDF_DARK = $(PDF:.pdf=-dark.pdf)
+PPTX = $(SRC:.md=.pptx)
 
 PDF_PUBLISH = $(PDF:$(SRC_DIR)/%=$(PUBLISH_DIR)/%) $(PDF_DARK:$(SRC_DIR)/%=$(PUBLISH_DIR)/%)
 PDF_NAMES = $(PDF:$(SRC_DIR)/%.pdf=%)
+
+PPTX_PUBLISH = $(PPTX:$(SRC_DIR)/%=$(PUBLISH_DIR)/%)
+PPTX_NAMES = $(PPTX:$(SRC_DIR)/%.pptx=%)
 
 PNG_ROOT = $(wildcard $(IMAGES_DIR)/*.png)
 PNG_TARGET = $(foreach NAME,$(PDF_NAMES),$(wildcard $(IMAGES_DIR)/$(NAME)/*.png))
@@ -44,27 +49,38 @@ DOT_PDF_ROOT = $(DOT_ROOT:.gv=.pdf)
 DOT_PDF_TARGET = $(DOT_TARGET:.gv=.pdf)
 DOT_PDF = $(DOT_PDF_ROOT) $(DOT_PDF_TARGET)
 
+TIKZ_ROOT = $(wildcard $(IMAGES_DIR)/*.tikz)
+TIKZ_TARGET = $(foreach NAME,$(PDF_NAMES),$(wildcard $(IMAGES_DIR)/$(NAME)/*.tikz))
+TIKZ_SVG_ROOT = $(TIKZ_ROOT:.tikz=.svg)
+TIKZ_SVG_TARGET = $(TIKZ_TARGET:.tikz=.svg)
+TIKZ_SVG = $(TIKZ_SVG_ROOT) $(TIKZ_SVG_TARGET)
+
 ############################
 # Goals
 ############################
 
-.PHONY: all clean pdf
+.PHONY: all clean pdf pptx
 .DEFAULT_GOAL := all
 
 all: pdf
 
-publish: $(PDF_PUBLISH)
+publish: $(PDF_PUBLISH) $(PPTX_PUBLISH)
 pdf:  $(PDF) $(PDF_DARK)
+pptx:  $(PPTX)
 
 clean: 
 	@echo "Cleaning up..."
-	rm -rvf $(PDF) $(PDF_DARK) $(SVG_PDF) $(DOT_PDF)
+	rm -rvf $(PDF) $(PDF_DARK) $(SVG_PDF) $(DOT_PDF) $(PPTX) $(TIKZ_SVG) $(BUILD_DIR)
 
 ############################
 # Publish patterns
 ############################
 
 $(PDF_PUBLISH): $(PUBLISH_DIR)/%.pdf: $(SRC_DIR)/%.pdf
+	@mkdir -p $(@D)
+	cp $< $@
+
+$(PPTX_PUBLISH): $(PUBLISH_DIR)/%.pptx: $(SRC_DIR)/%.pptx
 	@mkdir -p $(@D)
 	cp $< $@
 
@@ -79,6 +95,10 @@ $(PDF): %.pdf: %.md
 
 $(PDF_DARK): %-dark.pdf: %.md
 	$(PANDOC) $(PANDOC_ARGS) -t beamer --pdf-engine lualatex --variable darkmode=true $< -o $@
+
+$(PPTX): %.pptx: %.md
+	python3 $(COMMON_DIR)/check-pptx.py $(COMMON_DIR)/pres-template.pptx
+	$(PANDOC) $(PANDOC_ARGS) --reference-doc $(COMMON_DIR)/pres-template.pptx $< -o $@
 	
 ############################
 # Image patterns
@@ -92,6 +112,16 @@ $(SVG_PDF): %.pdf: %.svg
 
 $(DOT_PDF): %.pdf: %.gv
 	dot -Tpdf $< -o $@
+
+
+$(TIKZ_SVG): %.svg: %.tikz
+	@mkdir -p $(dir $(BUILD_DIR)/$<)
+	@cp $< $(BUILD_DIR)/$<
+	cd $(dir $(BUILD_DIR)/$<); \
+		pdflatex $(notdir $<)
+	@# SELF_CALL is workaround for running inkscape in parallel
+	@# See https://gitlab.com/inkscape/inkscape/-/issues/4716
+	SELF_CALL=no inkscape $(BUILD_DIR)/$*.pdf --export-plain-svg=$@
 
 ############################
 # Custom patterns
@@ -108,3 +138,10 @@ $(PDF_DARK): $(SRC_DIR)/%-dark.pdf: $(ROOT_IMAGE_DEPS) $(COMMON_PNG_IMAGE_DEPS) 
 $(PDF) $(PDF_DARK): $(COMMON_DIR)/pres.yaml $(COMMON_DIR)/pres-preamble.tex $(COMMON_DIR)/pres-template.tex
 $(PDF) $(PDF_DARK): PANDOC_ARGS = $(COMMON_DIR)/pres.yaml -H $(COMMON_DIR)/pres-preamble.tex --listings --template $(COMMON_DIR)/pres-template.tex --slide-level=1
 
+TARGET_TIKZ_DEPS = $(filter $(IMAGES_DIR)/$*/%,$(TIKZ_SVG_TARGET) $(SVG_TARGET) $(PNG_TARGET))
+ROOT_TIKZ_DEPS = $(filter $(IMAGES_DIR)/%,$(TIKZ_SVG_ROOT) $(SVG_ROOT) $(PNG_ROOT))
+
+.SECONDEXPANSION:
+$(PPTX): $(SRC_DIR)/%.pptx: $(ROOT_TIKZ_DEPS) $(COMMON_PNG_IMAGE_DEPS) $$(TARGET_TIKZ_DEPS)
+
+$(PPTX): $(COMMON_DIR)/check-pptx.py $(COMMON_DIR)/pres-template.pptx
