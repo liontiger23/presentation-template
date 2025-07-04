@@ -127,6 +127,9 @@ $(TIKZ_SVG): %.svg: %.tikz
 # Custom patterns
 ############################
 
+$(COMMON_DIR)/pres-template.pptx: $(COMMON_DIR)/pres-template-pptx
+	cd $(COMMON_DIR)/pres-template-pptx; \
+		zip -r ../pres-template.pptx .
 
 TARGET_IMAGE_DEPS = $(filter $(IMAGES_DIR)/$*/%,$(DOT_PDF_TARGET) $(SVG_PDF_TARGET) $(PNG_TARGET))
 ROOT_IMAGE_DEPS = $(filter $(IMAGES_DIR)/%,$(DOT_PDF_ROOT) $(SVG_PDF_ROOT) $(PNG_ROOT))
