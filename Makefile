@@ -99,6 +99,7 @@ $(PDF_DARK): %-dark.pdf: %.md
 $(PPTX): %.pptx: %.md
 	python3 $(COMMON_DIR)/check-pptx.py $(COMMON_DIR)/pres-template.pptx
 	$(PANDOC) $(PANDOC_ARGS) --reference-doc $(COMMON_DIR)/pres-template.pptx $< -o $@
+	python3 $(COMMON_DIR)/postprocess-pptx.py $@ $@
 	
 ############################
 # Image patterns
