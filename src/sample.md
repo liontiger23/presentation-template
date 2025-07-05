@@ -1,7 +1,6 @@
 ---
 title: Presentation template
 author: Ivan Trepakov
-institute: University
 ---
 
 # Пример слайда с кириллицей
@@ -175,20 +174,10 @@ $\onslide<1,3,5,7  >$    return n * factorial(n-1)
 
 # Conclusion
 
-::: columns
-:::: {.column width=10%}
-::::
-:::: {.column width=75%}
-
-## \centering Summary
+## Summary
 
 - Pandoc = Markdown + `\LaTeX`{=latex}
 - Please use this template and never open ~~Google Slides~~ PowerPoint ever again
-
-::::
-:::: {.column width=10%}
-::::
-:::
 
 # {.plain}
 
