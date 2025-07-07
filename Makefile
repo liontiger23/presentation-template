@@ -106,7 +106,7 @@ $(TIKZ_SVG): %.svg: %.tikz
 # Custom patterns
 ############################
 
-$(COMMON_DIR)/pres-template.pptx: $(COMMON_DIR)/pres-template-pptx
+$(COMMON_DIR)/pres-template.pptx: $(wildcard $(COMMON_DIR)/pres-template-pptx/**/*)
 	cd $(COMMON_DIR)/pres-template-pptx; \
 		zip -r ../pres-template.pptx . >/dev/null
 
