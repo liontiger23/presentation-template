@@ -119,10 +119,10 @@ $(TIKZ_SVG): %.svg: %.tikz
 	@mkdir -p $(dir $(BUILD_DIR)/$<)
 	@cp $< $(BUILD_DIR)/$<
 	cd $(dir $(BUILD_DIR)/$<); \
-		pdflatex $(notdir $<)
+		pdflatex $(notdir $<) >/dev/null
 	@# SELF_CALL is workaround for running inkscape in parallel
 	@# See https://gitlab.com/inkscape/inkscape/-/issues/4716
-	SELF_CALL=no inkscape $(BUILD_DIR)/$*.pdf --export-plain-svg=$@
+	SELF_CALL=no inkscape $(BUILD_DIR)/$*.pdf --pages=1 --export-plain-svg=$@
 
 ############################
 # Custom patterns
@@ -130,7 +130,7 @@ $(TIKZ_SVG): %.svg: %.tikz
 
 $(COMMON_DIR)/pres-template.pptx: $(COMMON_DIR)/pres-template-pptx
 	cd $(COMMON_DIR)/pres-template-pptx; \
-		zip -r ../pres-template.pptx .
+		zip -r ../pres-template.pptx . >/dev/null
 
 TARGET_IMAGE_DEPS = $(filter $(IMAGES_DIR)/$*/%,$(DOT_PDF_TARGET) $(SVG_PDF_TARGET) $(PNG_TARGET))
 ROOT_IMAGE_DEPS = $(filter $(IMAGES_DIR)/%,$(DOT_PDF_ROOT) $(SVG_PDF_ROOT) $(PNG_ROOT))
