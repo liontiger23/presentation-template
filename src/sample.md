@@ -22,7 +22,7 @@ def fact(n):
 :::
 ::: column
 
-![](images/sample/Example.svg)
+![](tikz/sample/Example.svg)
 
 :::
 ::::

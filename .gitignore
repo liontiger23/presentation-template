@@ -4,3 +4,4 @@
 *.pdf
 build/**
 !publish/**
+tikz/**/*.svg
